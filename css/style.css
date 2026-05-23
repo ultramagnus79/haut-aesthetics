@@ -8,16 +8,16 @@
    CSS Variables
    ------------------------------------------------------------ */
 :root {
-  --cream:       #F7F3EE;
-  --parchment:   #EDE6DC;
+  --cream:       #FAF8F4;
+  --parchment:   #F1EBE2;
   --rose:        #C9967A;
   --rose-light:  #E8C4B0;
   --rose-muted:  #D4A891;
   --brown:       #7A5C4E;
   --brown-dark:  #4A3528;
-  --text-dark:   #2E1F17;
-  --text-mid:    #6B4C3B;
-  --text-light:  #9E8478;
+  --text-dark:   #231611;
+  --text-mid:    #5C3F2E;
+  --text-light:  #8C7165;
 
   --ff-display: 'Cormorant Garamond', serif;
   --ff-body:    'IBM Plex Sans', sans-serif;
@@ -106,17 +106,6 @@ nav {
   text-transform: uppercase;
   color: var(--rose);
   margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.section-label::before {
-  content: '';
-  display: block;
-  width: 1.5rem;
-  height: 0.5px;
-  background: var(--rose);
 }
 
 .btn-primary {
@@ -193,17 +182,6 @@ nav {
   text-transform: uppercase;
   color: var(--rose);
   margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.page-eyebrow::before {
-  content: '';
-  display: block;
-  width: 1.5rem;
-  height: 0.5px;
-  background: var(--rose);
 }
 
 .page-title {
@@ -322,18 +300,7 @@ footer {
   text-transform: uppercase;
   color: var(--rose);
   margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
   animation: fadeInUp 0.7s ease 0.1s both;
-}
-
-.hero-eyebrow::before {
-  content: '';
-  display: block;
-  width: 2rem;
-  height: 0.5px;
-  background: var(--rose);
 }
 
 .hero-title {
@@ -374,7 +341,23 @@ footer {
   position: relative;
 }
 
-.hero-image-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-image-wrap img { position: absolute; top: -25%; left: 0; right: 0; width: 100%; height: 150%; object-fit: cover; will-change: transform; }
+
+.parallax-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-wrap img {
+  position: absolute;
+  top: -25%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 150%;
+  object-fit: cover;
+  will-change: transform;
+}
 
 .hero-image-overlay {
   position: absolute;
@@ -884,7 +867,7 @@ footer {
 .doctor-section:nth-child(even) { background: var(--parchment); direction: rtl; }
 .doctor-section:nth-child(even) > * { direction: ltr; }
 .doctor-photo-box { background: linear-gradient(135deg, #DDD0C4 0%, #C9B09A 40%, #B8967F 100%); aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-.doctor-photo-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.doctor-photo-box img { position: absolute; top: -25%; left: 0; right: 0; width: 100%; height: 150%; object-fit: cover; will-change: transform; }
 .doctor-photo-initials { font-family: var(--ff-display); font-size: 6rem; color: rgba(255,255,255,0.3); font-style: italic; font-weight: 300; }
 .doctor-photo-label { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; background: rgba(247,243,238,0.88); padding: 1rem 1.25rem; }
 .doctor-photo-label-sub { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.2rem; }
@@ -1267,9 +1250,14 @@ footer {
   position: relative;
   overflow: hidden;
   padding: 8rem 4rem;
-  background-attachment: scroll;
+  background-attachment: fixed;
   background-size: cover;
   background-position: center;
+}
+
+/* background-attachment: fixed is broken on iOS — fall back to scroll */
+@media (hover: none) {
+  .bg-image-section { background-attachment: scroll; }
 }
 
 .bg-image-section::before {
@@ -1289,9 +1277,6 @@ footer {
   color: rgba(232,196,176,0.8);
 }
 
-.bg-image-section .section-label::before {
-  background: rgba(232,196,176,0.6);
-}
 
 .bg-image-section .about-title {
   color: white;

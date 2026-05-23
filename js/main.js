@@ -43,6 +43,25 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ----------------------------------------------------------
+     Image parallax — hero + Hausbesuch
+     ---------------------------------------------------------- */
+  const parallaxImgs = document.querySelectorAll('[data-parallax]');
+  if (parallaxImgs.length) {
+    function updateImgParallax() {
+      parallaxImgs.forEach(function (img) {
+        const container = img.parentElement;
+        const rect = container.getBoundingClientRect();
+        const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+        const travel = parseFloat(img.dataset.parallax) || 200;
+        const translate = (progress - 0.5) * travel;
+        img.style.transform = 'translateY(' + translate + 'px)';
+      });
+    }
+    window.addEventListener('scroll', updateImgParallax, { passive: true });
+    updateImgParallax();
+  }
+
+  /* ----------------------------------------------------------
      Smooth scroll for any on-page anchor links
      ---------------------------------------------------------- */
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {

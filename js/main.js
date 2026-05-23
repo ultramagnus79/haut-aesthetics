@@ -52,9 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const container = img.parentElement;
         const rect = container.getBoundingClientRect();
         const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-        const travel = parseFloat(img.dataset.parallax) || 200;
+        const travel = parseFloat(img.dataset.parallax) || 100;
         const translate = (progress - 0.5) * travel;
-        img.style.transform = 'translateY(' + translate + 'px)';
+        const scale = 1 + progress * 0.18;
+        img.style.transform = 'translateY(' + translate + 'px) scale(' + scale + ')';
       });
     }
     window.addEventListener('scroll', updateImgParallax, { passive: true });

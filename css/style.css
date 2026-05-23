@@ -10,14 +10,14 @@
 :root {
   --cream:       #FAF8F4;
   --parchment:   #F1EBE2;
-  --rose:        #C9967A;
+  --rose:        #b67e6b;
   --rose-light:  #E8C4B0;
   --rose-muted:  #D4A891;
   --brown:       #7A5C4E;
-  --brown-dark:  #4A3528;
-  --text-dark:   #231611;
-  --text-mid:    #5C3F2E;
-  --text-light:  #8C7165;
+  --brown-dark:  #4f382a;
+  --text-dark:   #19100c;
+  --text-mid:    #342a24;
+  --text-light:  #675148;
 
   --ff-display: 'Cormorant Garamond', serif;
   --ff-body:    'IBM Plex Sans', sans-serif;
@@ -1062,7 +1062,7 @@ footer {
   .intro-strip-item { flex: 0 0 calc(50% - 0.75rem); }
 
   /* --- bg-image-section (about) --- */
-  .bg-image-section { padding: 4rem 1.25rem; }
+  .bg-image-section { padding: 2.5rem 1.25rem; }
 
   /* --- Home-visit split section --- */
   .home-visit-section { padding: 4rem 1.25rem; }

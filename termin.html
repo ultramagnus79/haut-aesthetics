@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hausbesuch buchen — Neu Aesthetics</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.calendar-wrap { margin-bottom: 1.5rem; }
+.cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.cal-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; color: #4A3528; }
+.cal-nav { background: none; border: 0.5px solid rgba(201,150,122,0.4); color: #9E8478; width: 32px; height: 32px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.cal-nav:hover { border-color: #C9967A; color: #C9967A; }
+.cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 3px; }
+.cal-day-name { text-align: center; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9E8478; padding: 0.4rem 0; }
+.cal-day { text-align: center; padding: 0.5rem 0; font-size: 1rem; color: #6B4C3B; cursor: pointer; border: 0.5px solid transparent; transition: all 0.15s; }
+.cal-day:hover:not(.empty):not(.past) { border-color: rgba(201,150,122,0.4); color: #4A3528; }
+.cal-day.selected { background: #4A3528; color: #F7F3EE; border-color: #4A3528; }
+.cal-day.today { border-color: #C9967A; color: #C9967A; }
+.cal-day.past { color: #ccc; cursor: default; }
+.cal-day.empty { cursor: default; }
+.time-slots { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 1.5rem; }
+.time-slot { padding: 0.6rem; border: 0.5px solid rgba(201,150,122,0.4); text-align: center; font-size: 0.78rem; color: #6B4C3B; cursor: pointer; transition: all 0.15s; }
+.time-slot:hover { border-color: #C9967A; }
+.time-slot.selected { background: #4A3528; color: #F7F3EE; border-color: #4A3528; }
+.time-slot.unavailable { color: #ccc; cursor: default; border-color: rgba(201,150,122,0.15); }
+.selected-summary { background: rgba(201,150,122,0.08); border-left: 2px solid #C9967A; padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 1rem; color: #6B4C3B; }
+.selected-summary strong { color: #4A3528; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Neu <span>Aesthetics</span></a>
+  <ul class="nav-links">
+    <li><a href="leistungen.html">Leistungen</a></li>
+    <li><a href="aerzte.html">Unsere Ärzte</a></li>
+    <li><a href="so-funktioniert-es.html">So funktioniert es</a></li>
+    <li><a href="termin.html" class="active">Kontakt</a></li>
+  </ul>
+  <a href="termin.html" class="nav-cta">Termin buchen</a>
+</nav>
+
+<div class="booking-layout">
+  <div class="booking-left">
+    <p class="page-eyebrow">Hausbesuch buchen</p>
+    <h1 class="page-title" style="font-size:3.5rem;">Wir kommen<br><em>zu Ihnen.</em></h1>
+    <p class="page-intro" style="margin-bottom:3rem; align-self:auto;">Füllen Sie das Formular aus — wir melden uns innerhalb von 24 Stunden. Das Erstgespräch ist kostenlos und unverbindlich.</p>
+
+    <div style="display:flex;flex-direction:column;gap:0;">
+      <div style="padding:1.5rem 0;border-bottom:0.5px solid rgba(201,150,122,0.2);display:flex;gap:1.25rem;align-items:flex-start;">
+        <div style="font-size:1rem;color:#C9967A;margin-top:0.1rem;flex-shrink:0;">✦</div>
+        <div>
+          <div style="font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:#D4A891;margin-bottom:0.25rem;">Nur Hausbesuche</div>
+          <div style="font-size:1rem;color:#6B4C3B;line-height:1.7;">Wir kommen zu Ihnen — in Nordrhein-Westfalen und Umgebung. Kein Praxisbesuch nötig.</div>
+        </div>
+      </div>
+      <div style="padding:1.5rem 0;border-bottom:0.5px solid rgba(201,150,122,0.2);display:flex;gap:1.25rem;align-items:flex-start;">
+        <div style="font-size:1rem;color:#C9967A;margin-top:0.1rem;flex-shrink:0;">✦</div>
+        <div>
+          <div style="font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:#D4A891;margin-bottom:0.25rem;">Erstgespräch kostenlos</div>
+          <div style="font-size:1rem;color:#6B4C3B;line-height:1.7;">Neu bei uns? Wählen Sie „Erstgespräch" — wir kommen unverbindlich vorbei.</div>
+        </div>
+      </div>
+      <div style="padding:1.5rem 0;border-bottom:0.5px solid rgba(201,150,122,0.2);display:flex;gap:1.25rem;align-items:flex-start;">
+        <div style="font-size:1rem;color:#C9967A;margin-top:0.1rem;flex-shrink:0;">✦</div>
+        <div>
+          <div style="font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:#D4A891;margin-bottom:0.25rem;">Erreichbarkeit</div>
+          <div style="font-size:1rem;color:#6B4C3B;line-height:1.7;">Oder rufen Sie uns an: <strong>[Telefonnummer wird ergänzt]</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem;padding:1.5rem 1.75rem;background:rgba(201,150,122,0.08);border-left:2px solid #C9967A;">
+      <div style="font-size:1rem;color:#6B4C3B;line-height:1.75;font-style:italic;">"Jeder Termin beginnt mit einem Gespräch — bei Ihnen zu Hause, in Ihrem Tempo. Wir nehmen uns die Zeit, Ihre Wünsche zu verstehen."</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#C9967A;margin-top:0.75rem;font-style:italic;">Dr. Tackenberg &amp; Dr. Wiedemann</div>
+    </div>
+
+    <div style="margin-top:2rem;overflow:hidden;">
+      <img src="media/images/situational-home-relaxed.png" alt="Entspannt zu Hause" style="width:100%;height:220px;object-fit:cover;">
+    </div>
+  </div>
+
+  <div class="booking-right">
+    <h2 class="form-title">Hausbesuch anfragen</h2>
+    <p class="form-sub">Alle Felder mit * sind Pflichtfelder. Wir melden uns innerhalb von 24 Stunden.</p>
+
+    <div class="form-group">
+      <label class="form-label">Art des Termins *</label>
+      <div class="form-options">
+        <div class="form-option selected" onclick="selectOption(this)">Erstgespräch</div>
+        <div class="form-option" onclick="selectOption(this)">Behandlung</div>
+        <div class="form-option" onclick="selectOption(this)">Folgetermin</div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Vorname *</label>
+        <input type="text" class="form-input" placeholder="Vorname" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nachname *</label>
+        <input type="text" class="form-input" placeholder="Nachname" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">E-Mail-Adresse *</label>
+      <input type="email" class="form-input" placeholder="ihre@email.de" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Telefonnummer *</label>
+      <input type="tel" class="form-input" placeholder="+49 ..." required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Ihre Adresse (für den Hausbesuch) *</label>
+      <input type="text" class="form-input" placeholder="Straße, Hausnummer, PLZ, Ort" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Gewünschte Behandlung</label>
+      <select class="form-select">
+        <option value="" disabled selected>Bitte wählen (optional)</option>
+        <option>Stirnfalten</option>
+        <option>Zornesfalten</option>
+        <option>Krähenfüße</option>
+        <option>Augenbrauen-Lifting</option>
+        <option>Bunny Lines</option>
+        <option>Lippenfalten</option>
+        <option>Kinngrübchen</option>
+        <option>Nofretete-Lifting</option>
+        <option>Kieferverschmälerung / Masseter</option>
+        <option>Hyperhidrose</option>
+        <option>Ich bin unsicher / möchte beraten werden</option>
+      </select>
+    </div>
+
+    <div class="form-group calendar-wrap">
+      <label class="form-label">Wunschdatum *</label>
+      <div class="cal-header">
+        <button class="cal-nav" id="prevMonth" onclick="changeMonth(-1)">‹</button>
+        <div class="cal-title" id="calTitle"></div>
+        <button class="cal-nav" id="nextMonth" onclick="changeMonth(1)">›</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+
+    <div class="form-group" id="timeWrap" style="display:none;">
+      <label class="form-label">Wunschuhrzeit *</label>
+      <div class="time-slots" id="timeSlots"></div>
+    </div>
+
+    <div class="selected-summary" id="selectedSummary" style="display:none;">
+      Gewählter Termin: <strong id="summaryText"></strong>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Nachricht / Wünsche</label>
+      <textarea class="form-textarea" placeholder="Besondere Wünsche, Fragen, oder Hinweise zu Ihrer Adresse?"></textarea>
+    </div>
+
+    <label class="form-check">
+      <input type="checkbox" required>
+      <span class="form-check-label">Ich habe die Datenschutzerklärung gelesen und bin mit der Verarbeitung meiner Daten zur Terminvereinbarung einverstanden. *</span>
+    </label>
+
+    <button class="btn-submit">Hausbesuch anfragen</button>
+    <p class="form-note">Wir bestätigen Ihren Termin innerhalb von 24 Stunden telefonisch oder per E-Mail.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Neu Aesthetics</div>
+  <div class="footer-trust">
+    <span class="trust-badge"><span class="trust-dot"></span>Nur Hausbesuche</span>
+    <span class="trust-badge"><span class="trust-dot"></span>Approbierte Ärzte</span>
+    <span class="trust-badge"><span class="trust-dot"></span>CE-zertifizierte Produkte</span>
+    <span class="trust-badge"><span class="trust-dot"></span>Nordrhein-Westfalen</span>
+  </div>
+  <div class="footer-meta">© 2026 Neu Aesthetics</div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+const MONTHS = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+const DAYS = ['Mo','Di','Mi','Do','Fr','Sa','So'];
+const TIMES = ['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00'];
+const UNAVAILABLE_TIMES = ['12:00','13:00'];
+
+let currentDate = new Date();
+let viewYear = currentDate.getFullYear();
+let viewMonth = currentDate.getMonth();
+let selectedDate = null;
+let selectedTime = null;
+
+function renderCalendar() {
+  document.getElementById('calTitle').textContent = MONTHS[viewMonth] + ' ' + viewYear;
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+  DAYS.forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'cal-day-name';
+    el.textContent = d;
+    grid.appendChild(el);
+  });
+  const firstDay = new Date(viewYear, viewMonth, 1).getDay();
+  const offset = firstDay === 0 ? 6 : firstDay - 1;
+  for (let i = 0; i < offset; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day empty';
+    grid.appendChild(el);
+  }
+  const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  for (let d = 1; d <= daysInMonth; d++) {
+    const el = document.createElement('div');
+    const thisDate = new Date(viewYear, viewMonth, d);
+    const isPast = thisDate < today;
+    const isToday = thisDate.getTime() === today.getTime();
+    const isSelected = selectedDate && thisDate.getTime() === selectedDate.getTime();
+    const isSunday = thisDate.getDay() === 0;
+    el.className = 'cal-day' + (isPast || isSunday ? ' past' : '') + (isToday ? ' today' : '') + (isSelected ? ' selected' : '');
+    el.textContent = d;
+    if (!isPast && !isSunday) {
+      el.onclick = () => selectDay(thisDate);
+    }
+    grid.appendChild(el);
+  }
+}
+
+function selectDay(date) {
+  selectedDate = date;
+  selectedTime = null;
+  renderCalendar();
+  const timeWrap = document.getElementById('timeWrap');
+  const slotsEl = document.getElementById('timeSlots');
+  slotsEl.innerHTML = '';
+  TIMES.forEach(t => {
+    const el = document.createElement('div');
+    const unavail = UNAVAILABLE_TIMES.includes(t);
+    el.className = 'time-slot' + (unavail ? ' unavailable' : '');
+    el.textContent = t;
+    if (!unavail) el.onclick = () => selectTime(t, el);
+    slotsEl.appendChild(el);
+  });
+  timeWrap.style.display = 'block';
+  updateSummary();
+}
+
+function selectTime(time, el) {
+  selectedTime = time;
+  document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+  updateSummary();
+}
+
+function updateSummary() {
+  const summary = document.getElementById('selectedSummary');
+  const text = document.getElementById('summaryText');
+  if (selectedDate) {
+    const dateStr = selectedDate.getDate() + '. ' + MONTHS[selectedDate.getMonth()] + ' ' + selectedDate.getFullYear();
+    text.textContent = dateStr + (selectedTime ? ' um ' + selectedTime + ' Uhr' : ' — bitte noch Uhrzeit wählen');
+    summary.style.display = 'block';
+  }
+}
+
+function changeMonth(dir) {
+  viewMonth += dir;
+  if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+  if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+  renderCalendar();
+}
+
+renderCalendar();
+</script>
+</body>
+</html>

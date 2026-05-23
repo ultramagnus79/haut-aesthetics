@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leistungen & Preise — Neu Aesthetics</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.services-list-v2 { padding: 4rem 4rem 5rem; }
+.service-card-v2 {
+  display: grid;
+  grid-template-columns: 220px 1fr auto;
+  align-items: start;
+  gap: 2.5rem;
+  padding: 2.5rem 0;
+  border-bottom: 0.5px solid rgba(201,150,122,0.2);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.service-card-v2:first-child { border-top: 0.5px solid rgba(201,150,122,0.2); }
+.service-card-v2:hover { background: var(--parchment); padding-left: 1rem; padding-right: 1rem; margin-left: -1rem; margin-right: -1rem; }
+.svc-thumb {
+  position: relative;
+  overflow: hidden;
+  height: 170px;
+  flex-shrink: 0;
+}
+.svc-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.service-card-v2:hover .svc-thumb img { transform: scale(1.04); }
+.svc-thumb-num {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 0.75rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  font-style: italic;
+  color: white;
+  line-height: 1;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+.svc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--brown-dark);
+  margin-bottom: 0.6rem;
+}
+.svc-desc {
+  font-size: 1rem;
+  color: var(--text-mid);
+  line-height: 1.85;
+  margin-bottom: 0.75rem;
+}
+.svc-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.svc-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--brown-dark);
+  white-space: nowrap;
+  text-align: right;
+  padding-top: 0.2rem;
+}
+.svc-price-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  text-align: right;
+  margin-top: 0.25rem;
+}
+.svc-cta {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rose);
+  text-align: right;
+  margin-top: 0.5rem;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.service-card-v2:hover .svc-cta { opacity: 1; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Neu <span>Aesthetics</span></a>
+  <ul class="nav-links">
+    <li><a href="leistungen.html" class="active">Leistungen</a></li>
+    <li><a href="aerzte.html">Unsere Ärzte</a></li>
+    <li><a href="so-funktioniert-es.html">So funktioniert es</a></li>
+    <li><a href="termin.html">Kontakt</a></li>
+  </ul>
+  <a href="termin.html" class="nav-cta">Termin buchen</a>
+</nav>
+
+<section class="page-hero">
+  <div>
+    <p class="page-eyebrow">Medizinische Hautbehandlung</p>
+    <h1 class="page-title">Unsere<br><em>Behandlungen.</em></h1>
+  </div>
+  <p class="page-intro">Zehn sorgfältig ausgewählte Behandlungen mit Botulinumtoxin — jede individuell auf Ihr Gesicht und Ihre Ziele abgestimmt, von approbierten Ärzten direkt bei Ihnen zu Hause.</p>
+</section>
+
+<section class="services-list-v2">
+
+  <a href="leistung-detail.html" class="service-card-v2">
+    <div class="svc-thumb"><img src="media/treatments/treatment-stirnfalten.png" alt="Stirnfalten"><div class="svc-thumb-num">01</div></div>
+    <div>
+      <div class="svc-name">Stirnfalten</div>
+      <div class="svc-desc">Horizontale Linien auf der Stirn entstehen durch wiederholte Ausdrucksbewegungen. Eine präzise Entspannung der zugehörigen Muskeln glättet das Erscheinungsbild, ohne den natürlichen Ausdruck zu verändern.</div>
+      <div class="svc-tags"><span class="tag">Gesicht</span><span class="tag">Ca. 15 Min.</span><span class="tag">Hausbesuch</span></div>
+    </div>
+    <div><div class="svc-price">ab 199 €</div><div class="svc-price-label">inkl. Beratung</div><div class="svc-cta">Mehr erfahren →</div></div>
+  </a>
+
+  <a href="leistung-detail.html" class="service-card-v2">
+    <div class="svc-thumb"><img src="media/treatments/treatment-zornesfalten.png" alt="Zornesfalten"><div class="svc-thumb-num">02</div></div>
+    <div>
+      <div class="svc-name">Zornesfalten</div>
+      <div class="svc-desc">Die vertikalen Falten zwischen den Augenbrauen — oft „Löwenfältchen" genannt — erzeugen einen angespannten Gesichtsausdruck. Diese Behandlung entspannt die Muskulatur gezielt und sanft.</div>
+      <div class="svc-tags"><span class="tag">Gesicht</span><span class="tag">Ca. 15 Min.</span><span class="tag">Hausbesuch</span></div>
+    </div>
+    <div><div class="svc-price">ab 199 €</div><div class="svc-price-label">inkl. Beratung</div><div class="svc-cta">Mehr erfahren →</div></div>
+  </a>
+
+  <a href="leistung-detail.html" class="service-card-v2">
+    <div class="svc-thumb"><img src="media/treatments/treatment-kraehenfuesse.png" alt="Krähenfüße"><div class="svc-thumb-num">03</div></div>
+    <div>
+      <div class="svc-name">Krähenfüße</div>
+      <div class="svc-desc">Feine Lachlinien am äußeren Augenwinkel sind ein natürliches Zeichen von Ausdrucksstärke — aber manchmal mehr als gewünscht. Eine behutsame Behandlung sorgt für ein frischeres Erscheinungsbild.</div>
+      <div class="svc-tags"><span class="tag">Augenpartie</span><span class="tag">Ca. 15 Min.</span><span class="tag">Hausbesuch</span></div>
+    </div>
+    <div><div class="svc-price">ab 179 €</div><div class="svc-price-label">inkl. Beratung</div><div class="svc-cta">Mehr erfahren →</div></div>
+  </a>
+
+  <a href="leistung-detail.html" class="service-card-v2">
+    <div class="svc-thumb"><img src="media/treatments/treatment-brauenlift.png" alt="Augenbrauen-Lifting"><div class="svc-thumb-num">04</div></div>
+    <div>
+      <div class="svc-name">Augenbrauen-Lifting</div>
+      <div class="svc-desc">Durch gezielte Entspannung bestimmter Muskelgruppen lässt sich die Augenbrauenposition subtil anheben — für einen offeneren, wacheren Blick ohne operativen Eingriff.</div>
+      <div class="svc-tags"><span class="tag">Augenpartie</span><span class="tag">Ca. 20 Min.</span><span class="tag">Hausbesuch</span></div>
+    </div>
+    <div><div class="svc-price">ab 229 €</div><div class="svc-price-label">inkl. Beratung</div><div class="svc-cta">Mehr erfahren →</div></div>
+  </a>
+
+  <a href="leistung-detail.html" class="service-card-v2">
+    <div class="svc-thumb"><img src="media/treatments/treatment-bunnylines.png" alt="Bunny Lines"><div class="svc-thumb-num">05</div></div>
+    <div>
+      <div class="svc-name">Bunny Lines</div>
+      <div class="svc-desc">Die feinen Querfalten, die beim Lachen oder Rümpfen der Nase entstehen, können dezent geglättet werden — für ein harmonisches Gesamtbild.</div>
+      <div class="svc-tags"><span class="tag">Nase</span><span class="tag">Ca. 10 Min.</span><span class="tag">Hausbesuch</span></div>
+    </div>
+    <div><div class="svc-price">ab 149 €</div><div class="svc-price-label">inkl. Beratung</div><div class="svc-cta">Mehr erfahren →</div></div>
+  </a>
+
+  <a href="leistung-detail.html" class="service-card-v2">
+    <div class="svc-thumb"><img src="media/treatments/treatment-lippenfalten.png" alt="Lippenfalten"><div class="svc-thumb-num">06</div></div>
+    <div>
+      <div class="svc-name">Lippenfalten</div>
+      <div class="svc-desc">Feine vertikale Linien rund um den Mund entstehen mit der Zeit durch Sonneneinwirkung und Muskelaktivität. Diese Behandlung glättet diskret und erhält die Natürlichkeit des Lächelns.</div>
+      <div class="svc-tags"><span class="tag">Mund</span><span class="tag">Ca. 15 Min.</span><span class="tag">Hausbesuch</span></div>
+    </div>
+    <div><div class="svc-price">ab 179 €</div><div class="svc-price-label">inkl. Beratung</div><div class="svc-cta">Mehr erfahren →</div></div>
+  </a>
+
+  <a href="leistung-detail.html" class="service-card-v2">
+    <div class="svc-thumb"><img src="media/treatments/treatment-kinngrubchen.png" alt="Kinngrübchen"><div class="svc-thumb-num">07</div></div>
+    <div>
+      <div class="svc-name">Kinngrübchen</div>
+      <div class="svc-desc">Eine unregelmäßige Kinnstruktur lässt sich durch gezielte Entspannung des Mentalis-Muskels deutlich glätten — für ein ruhigeres, ebenmäßigeres Erscheinungsbild.</div>
+      <div class="svc-tags"><span class="tag">Kinn</span><span class="tag">Ca. 10 Min.</span><span class="tag">Hausbesuch</span></div>
+    </div>
+    <div><div class="svc-price">ab 149 €</div><div class="svc-price-label">inkl. Beratung</div><div class="svc-cta">Mehr erfahren →</div></div>
+  </a>
+
+  <a href="leistung-detail.html" class="service-card-v2">
+    <div class="svc-thumb"><img src="media/treatments/treatment-nofretete.png" alt="Nofretete-Lifting"><div class="svc-thumb-num">08</div></div>
+    <div>
+      <div class="svc-name">Nofretete-Lifting</div>
+      <div class="svc-desc">Diese Behandlung strafft Hals- und Kieferbereich durch gezielte Entspannung der Platysma-Muskeln — für eine elegantere Kontur ohne Operation.</div>
+      <div class="svc-tags"><span class="tag">Hals &amp; Kiefer</span><span class="tag">Ca. 20 Min.</span><span class="tag">Hausbesuch</span></div>
+    </div>
+    <div><div class="svc-price">ab 279 €</div><div class="svc-price-label">inkl. Beratung</div><div class="svc-cta">Mehr erfahren →</div></div>
+  </a>
+
+  <a href="leistung-detail.html" class="service-card-v2">
+    <div class="svc-thumb"><img src="media/treatments/treatment-masseter.png" alt="Masseter"><div class="svc-thumb-num">09</div></div>
+    <div>
+      <div class="svc-name">Kieferverschmälerung / Masseter</div>
+      <div class="svc-desc">Bei übermäßig ausgeprägten Kiefermuskeln entspannt diese Behandlung den Masseter-Muskel — für ein schlankeres Gesichtsoval und weniger Beschwerden beim Zähneknirschen.</div>
+      <div class="svc-tags"><span class="tag">Kiefer</span><span class="tag">Ca. 20 Min.</span><span class="tag">Hausbesuch</span></div>
+    </div>
+    <div><div class="svc-price">ab 349 €</div><div class="svc-price-label">inkl. Beratung</div><div class="svc-cta">Mehr erfahren →</div></div>
+  </a>
+
+  <a href="leistung-detail.html" class="service-card-v2">
+    <div class="svc-thumb"><img src="media/treatments/treatment-hyperhidrose.png" alt="Hyperhidrose"><div class="svc-thumb-num">10</div></div>
+    <div>
+      <div class="svc-name">Übermäßiges Schwitzen (Hyperhidrose)</div>
+      <div class="svc-desc">Bei starkem Schwitzen kann eine gezielte Behandlung die Schweißdrüsen temporär inaktivieren — sicher, wirksam und mit langanhaltendem Ergebnis.</div>
+      <div class="svc-tags"><span class="tag">Körper</span><span class="tag">Ca. 30 Min.</span><span class="tag">Hausbesuch</span></div>
+    </div>
+    <div><div class="svc-price">ab 399 €</div><div class="svc-price-label">inkl. Beratung</div><div class="svc-cta">Mehr erfahren →</div></div>
+  </a>
+
+</section>
+
+<div class="info-strip">
+  <div class="info-block">
+    <div class="info-block-label">Preishinweis</div>
+    <div class="info-block-text">Alle Preise sind Richtwerte. Der genaue Preis wird immer im persönlichen Beratungsgespräch festgelegt — transparent und ohne versteckte Kosten.</div>
+  </div>
+  <div class="info-block">
+    <div class="info-block-label">Immer Hausbesuch</div>
+    <div class="info-block-text">Alle Behandlungen finden bei Ihnen zu Hause statt — im Preis enthalten, kein Aufpreis.</div>
+  </div>
+  <div class="info-block">
+    <div class="info-block-label">Erstgespräch kostenlos</div>
+    <div class="info-block-text">Das Erstgespräch ist kostenlos und unverbindlich — wir kommen zu Ihnen oder sprechen telefonisch.</div>
+  </div>
+</div>
+
+<section class="booking-strip">
+  <div>
+    <h2 class="booking-title">Wir kommen<br><em>zu Ihnen.</em></h2>
+    <p class="booking-sub">Buchen Sie Ihren Hausbesuch — unkompliziert, diskret und in Ihrem Tempo.</p>
+  </div>
+  <a href="termin.html" class="btn-booking">Hausbesuch buchen</a>
+</section>
+
+<footer>
+  <div class="footer-logo">Neu Aesthetics</div>
+  <div class="footer-trust">
+    <span class="trust-badge"><span class="trust-dot"></span>Nur Hausbesuche</span>
+    <span class="trust-badge"><span class="trust-dot"></span>Approbierte Ärzte</span>
+    <span class="trust-badge"><span class="trust-dot"></span>CE-zertifizierte Produkte</span>
+    <span class="trust-badge"><span class="trust-dot"></span>Nordrhein-Westfalen</span>
+  </div>
+  <div class="footer-meta">© 2026 Neu Aesthetics</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

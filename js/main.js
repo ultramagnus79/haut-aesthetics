@@ -14,6 +14,24 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   /* ----------------------------------------------------------
+     Mobile hamburger menu
+     ---------------------------------------------------------- */
+  const hamburger = document.querySelector('.nav-hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', function () {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-links a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
      Active nav link highlighting
      ---------------------------------------------------------- */
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';

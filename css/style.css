@@ -970,6 +970,248 @@ footer {
 }
 
 /* ------------------------------------------------------------
+   Hamburger button (hidden on desktop)
+   ------------------------------------------------------------ */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  z-index: 101;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--brown-dark);
+  transition: transform 0.25s, opacity 0.25s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+/* ------------------------------------------------------------
+   Named classes for previously-inline layout styles
+   ------------------------------------------------------------ */
+.home-visit-section {
+  background: var(--parchment);
+  padding: 8rem 4rem;
+}
+.split-col-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.aerzte-about {
+  padding: 7rem 4rem;
+  background: var(--cream);
+}
+.steps-section {
+  padding: 7rem 4rem;
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile (≤ 768px)
+   ============================================================ */
+@media (max-width: 1024px) {
+
+  /* --- Navigation --- */
+  nav { padding: 1rem 1.25rem; }
+
+  .nav-hamburger { display: flex; }
+
+  .nav-cta { display: none; }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 57px;
+    left: 0; right: 0;
+    background: rgba(247,243,238,0.97);
+    backdrop-filter: blur(8px);
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 0 1rem;
+    border-bottom: 0.5px solid rgba(201,150,122,0.25);
+    z-index: 99;
+    list-style: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 0.5px solid rgba(201,150,122,0.12); }
+  .nav-links a {
+    display: block;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.82rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  /* --- Hero --- */
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .hero-left {
+    padding: 2.5rem 1.25rem 2.5rem;
+    order: 2;
+  }
+  .hero-right {
+    order: 1;
+    min-height: 280px;
+  }
+  .hero-title { font-size: 3rem; }
+  .hero-sub { font-size: 1rem; max-width: 100%; }
+  .hero-image-wrap { min-height: 280px; }
+
+  /* --- Intro strip --- */
+  .intro-strip {
+    padding: 1.25rem 1.25rem;
+    justify-content: flex-start;
+    gap: 0.75rem 1.5rem;
+  }
+  .intro-strip-item { flex: 0 0 calc(50% - 0.75rem); }
+
+  /* --- bg-image-section (about) --- */
+  .bg-image-section {
+    padding: 4rem 1.25rem;
+    background-attachment: scroll;
+  }
+
+  /* --- Home-visit split section --- */
+  .home-visit-section { padding: 4rem 1.25rem; }
+  .split-col-2 { grid-template-columns: 1fr; gap: 2rem; }
+
+  /* --- Services --- */
+  .services { padding: 4.5rem 1.25rem; }
+  .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .services-title { font-size: 2.4rem; max-width: 100%; }
+  .services-intro { text-align: left; max-width: 100%; }
+  .services-grid { grid-template-columns: 1fr; }
+
+  /* --- Testimonials --- */
+  .testimonials { padding: 4.5rem 1.25rem; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .testimonials-title { font-size: 2.2rem; }
+
+  /* --- Doctors (homepage) --- */
+  .doctors { padding: 4.5rem 1.25rem; }
+  .doctors-grid { grid-template-columns: 1fr; }
+  .doctors-title { font-size: 2.4rem; }
+
+  /* --- Booking strip --- */
+  .booking-strip {
+    padding: 3.5rem 1.25rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .booking-title { font-size: 2.2rem; }
+
+  /* --- Footer --- */
+  footer {
+    padding: 2.5rem 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* --- Page hero (inner pages) --- */
+  .page-hero {
+    padding: 6.5rem 1.25rem 3rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .page-title { font-size: 2.8rem; }
+
+  /* --- Leistungen list --- */
+  .services-list-v2 { padding: 2.5rem 1.25rem 3.5rem; }
+
+  /* --- Info strip --- */
+  .info-strip {
+    padding: 3rem 1.25rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* --- Booking layout (termin) --- */
+  .booking-layout {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: 57px;
+  }
+  .booking-left { padding: 3rem 1.25rem; }
+  .booking-right { padding: 3rem 1.25rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-options { flex-direction: column; }
+  .page-title[style] { font-size: 2.4rem !important; }
+
+  /* --- Steps (so-funktioniert-es) --- */
+  .steps-section { padding: 4rem 1.25rem; }
+  .step-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 2.5rem 0;
+  }
+  .step-row-num { font-size: 3rem; }
+  .step-row-title { font-size: 1.8rem; }
+
+  /* --- FAQ --- */
+  .faq-section { padding: 4.5rem 1.25rem; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .faq-title { font-size: 2.2rem; }
+
+  /* --- Reassurance --- */
+  .reassurance {
+    padding: 3.5rem 1.25rem;
+    grid-template-columns: 1fr;
+  }
+
+  /* --- Doctor sections (aerzte.html) --- */
+  .doctor-section {
+    padding: 4rem 1.25rem;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    direction: ltr !important;
+  }
+  .doctor-section .doctor-photo-box { aspect-ratio: 3/2; }
+  .aerzte-about {
+    padding: 4rem 1.25rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    display: grid;
+  }
+  .philosophy { padding: 4.5rem 1.25rem; }
+  .philosophy-quote { font-size: 1.75rem; }
+
+  /* --- Leistung detail --- */
+  .breadcrumb { padding: 5rem 1.25rem 0; }
+  .detail-hero {
+    padding: 2rem 1.25rem 3.5rem;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .detail-title { font-size: 2.4rem; }
+  .detail-cta-group { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  .detail-body {
+    padding: 0 1.25rem 3.5rem;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .other-services { padding: 3.5rem 1.25rem; }
+  .other-grid { grid-template-columns: 1fr; }
+
+  /* --- About stat cards --- */
+  .about { padding: 4.5rem 1.25rem; grid-template-columns: 1fr; gap: 3rem; }
+  .about-title { font-size: 2.4rem; }
+
+}
+
+/* ------------------------------------------------------------
    Leistungen — Large image cards
    ------------------------------------------------------------ */
 .service-card-img {
@@ -987,7 +1229,7 @@ footer {
   transition: all 0.2s;
 }
 
-.service-card-v2:first-child { border-top: 0.5px solid rgba(201,150,122,0.2); padding-top: 0; }
+.service-card-v2:first-child { border-top: 0.5px solid rgba(201,150,122,0.2); }
 .service-card-v2:hover .service-card-v2-img { filter: brightness(0.95); }
 
 .service-card-v2-thumb {

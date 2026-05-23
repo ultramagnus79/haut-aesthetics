@@ -1079,10 +1079,7 @@ footer {
   .intro-strip-item { flex: 0 0 calc(50% - 0.75rem); }
 
   /* --- bg-image-section (about) --- */
-  .bg-image-section {
-    padding: 4rem 1.25rem;
-    background-attachment: scroll;
-  }
+  .bg-image-section { padding: 4rem 1.25rem; }
 
   /* --- Home-visit split section --- */
   .home-visit-section { padding: 4rem 1.25rem; }
@@ -1270,7 +1267,7 @@ footer {
   position: relative;
   overflow: hidden;
   padding: 8rem 4rem;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-size: cover;
   background-position: center;
 }
